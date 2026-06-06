@@ -7,7 +7,7 @@ const Navbar = () => {
   return (
     <nav className='flex justify-between p-5'>
       <div>
-        <h2 className='text-3xl font-bold'>Study<span className='text-teal-500'>Nest</span></h2>
+        <h2 className='text-3xl font-bold'><span className='text-[#2D3748]'>Study</span><span className='text-teal-500'>Nest</span></h2>
       </div>
       <ul className='flex gap-3'>
         <li><Link href={'/'}>Home</Link></li>
