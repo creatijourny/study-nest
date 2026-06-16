@@ -1,10 +1,10 @@
 'use client'
 import Amenities from '@/components/Amenities';
 import { Button, Card, FieldError, Input, Label, ListBox, TextArea, Select, TextField, Checkbox } from '@heroui/react';
-import { redirect } from 'next/navigation';
+// import { redirect } from 'next/navigation';
 
 import React, { useState } from 'react';
-// import { toast } from 'react-toastify';
+// // import { toast } from 'react-toastify';
 
 const amenitiesList = [
     "Whiteboard",
@@ -16,7 +16,7 @@ const amenitiesList = [
 ];
 
 
-const AddRoom = () => {
+const AddRoomPage = () => {
     
     const onSubmit = async (e) => {
         e.preventDefault()
@@ -32,6 +32,7 @@ const AddRoom = () => {
             },
             body: JSON.stringify(room)
         })
+
         const data = await res.json()
         console.log(data);
         // toast.success("Room added successfully")
@@ -49,10 +50,9 @@ const AddRoom = () => {
         }
 
     };
-
     
 
-    return (
+    return (        
         <div className='max-w-7xl mx-auto p-5'>
             <h2 className='text-2xl font-bold text-[#2D3748] text-center'>Add Room</h2>
             <Card>                
@@ -123,7 +123,7 @@ const AddRoom = () => {
                         type="submit"
                         variant="outline"
                         className=" rounded-none w-3/4 bg-cyan-500 text-white">
-                        Submit
+                        Add Room
                     </Button>
 
                 </form>
@@ -133,30 +133,4 @@ const AddRoom = () => {
     );
 };
 
-export default AddRoom;
-
-  {/* <div className="grid grid-cols-2 gap-4">
-
-                        {amenitiesList.map((item) => (
-
-                            <Checkbox
-                                key={item}
-                                isSelected={selectedAmenities.includes(item)}
-                                onValueChange={(checked) =>
-                                    handleAmenityChange(item, checked)}
-                            >
-                                <Checkbox.Control className="size-4 border border-gray-400 rounded-full before:rounded-full
-                                data-[selected=true]:bg-cyan-500
-                                data-[selected=true]:border-cyan-500
-                                text-white">
-                                    <Checkbox.Indicator />
-                                </Checkbox.Control>
-                                <Checkbox.Content>
-                                    {item}
-                                </Checkbox.Content>
-
-
-                            </Checkbox>
-
-                        ))}
-                    </div> */}
+export default AddRoomPage;
