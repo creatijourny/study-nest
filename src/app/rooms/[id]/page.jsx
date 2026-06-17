@@ -1,7 +1,7 @@
 
 // import BookingModal from '@/components/BookingModal';
 // import { DeleteRoom } from '@/components/DeleteRoom';
-// import { EditModal } from '@/components/EditModal';
+import { EditModal } from '@/components/EditModal';
 
 import Image from 'next/image';
 
@@ -49,18 +49,18 @@ const RoomDetailsPage = async ({ params }) => {
 
                     <span className="text-green-500">+2 more</span>
                 </div>
-                {/* <div className='flex justify-start items-center gap-2'>
+                <div className='flex justify-start items-center gap-2'>
                    
-                    <BookingModal 
+                    {/* <BookingModal 
                     roomName={room.roomName}
                     imageUrl={room.imageUrl} 
                     hourlyRate={room.price}
-                    roomId={room._id}/>
+                    roomId={room._id}/> */}
                     
                    <EditModal room={room}/>
-                   <DeleteRoom room={room}/>
+                   {/* <DeleteRoom room={room}/> */}
                     
-                </div> */}
+                </div>
             </div>
         </div>
     );
