@@ -1,6 +1,6 @@
 
 // import BookingModal from '@/components/BookingModal';
-// import { DeleteRoom } from '@/components/DeleteRoom';
+import { DeleteRoom } from '@/components/DeleteRoom';
 import { EditModal } from '@/components/EditModal';
 
 import Image from 'next/image';
@@ -58,7 +58,7 @@ const RoomDetailsPage = async ({ params }) => {
                     roomId={room._id}/> */}
                     
                    <EditModal room={room}/>
-                   {/* <DeleteRoom room={room}/> */}
+                   <DeleteRoom room={room}/>
                     
                 </div>
             </div>
