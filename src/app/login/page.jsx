@@ -1,15 +1,16 @@
 "use client";
-import { FcGoogle } from "react-icons/fc";
 import { Card, Separator } from '@heroui/react';
 import React from 'react';
+// import { Check } from "@gravity-ui/icons";
 import { Button, Description, FieldError, Form, Input, Label, TextField } from "@heroui/react";
 import { authClient } from '@/lib/auth-client';
 import { redirect } from 'next/navigation';
 import { toast } from 'react-toastify';
+import { FcGoogle } from 'react-icons/fc';
 
 
 
-const SignUpPage = () => {
+const LoginPage = () => {
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -17,16 +18,16 @@ const SignUpPage = () => {
         const formData = new FormData(e.currentTarget);
         const user = Object.fromEntries(formData.entries());
 
-        const { data, error } = await authClient.signUp.email({
+        const { data, error } = await authClient.signIn.email({
             email: user.email,
             password: user.password,
-            name: user.name,
-            image: user.image
-        })
+        });
+        console.log({ data, error });
+
         if (data) {
             toast.success("Successfully registered!")
             redirect('/');
-            
+
         }
 
         if (error) {
@@ -36,38 +37,22 @@ const SignUpPage = () => {
             });
         };
     }
+
     const handleGoogleSignIn = async () => {
-        await authClient.signIn.social({
-            provider: "google"
-        })
-    }
+            await authClient.signIn.social({
+                provider: "google"
+            })
+        }
+
     return (
         <div className='max-w-7xl mx-auto'>
             <div className='text-center mb-4'>
-                <h1 className='text-2xl font-bold'>Please Sign Up</h1>
-                <p>Enjoy reading with StudyNest</p>
+                <h1 className='text-2xl font-bold'>Please login</h1>
+                <p>Enjoy reading with Studynook</p>
             </div>
             <Card className='border rounded-md'>
                 <Form onSubmit={onSubmit} className="flex w-96 flex-col gap-4 space-y-3 p-3">
-                    <TextField
-                        isRequired
-                        name="name"
-                        type="text"
 
-                    >
-                        <Label>Name</Label>
-                        <Input placeholder="Enter your name" />
-                        <FieldError />
-                    </TextField>
-                    <TextField
-                        name="image"
-                        type="url"
-
-                    >
-                        <Label>Image URL</Label>
-                        <Input placeholder="Image url" />
-                        <FieldError />
-                    </TextField>
                     <TextField
                         isRequired
                         name="email"
@@ -109,26 +94,25 @@ const SignUpPage = () => {
                     <div className="flex justify-center">
                         <Button type="submit" className={'w-full rounded-none bg-cyan-500'}>
 
-                            Create account
+                            Login
                         </Button>
-                        
+
 
                     </div>
                 </Form>
                 <div className='flex justify-center items-center gap-3'>
                     <Separator />
                     <div className='whitespace-nowrap'>Or</div>
-                    <Separator />                    
+                    <Separator />
                 </div>
                 <div>
                     <Button onClick={handleGoogleSignIn} variant="outline" className={"w-full rounded-none"}><FcGoogle /> Sign in with Google</Button>
                 </div>
 
-
             </Card>
-            
+
         </div>
     );
 };
 
-export default SignUpPage;
+export default LoginPage;
