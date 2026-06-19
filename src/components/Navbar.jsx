@@ -1,6 +1,6 @@
 'use client'
 import { authClient } from '@/lib/auth-client';
-import { Avatar } from '@heroui/react';
+import { Avatar, Button } from '@heroui/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
@@ -13,6 +13,10 @@ const Navbar = () => {
 
   const user = session?.user
   console.log(user);
+
+  const handleSignOut = async () => {
+    await authClient.signOut();
+  }
 
   return (
     <nav className='flex items-center justify-between p-5'>
@@ -41,7 +45,9 @@ const Navbar = () => {
         <Avatar.Fallback>{user.name[0]}</Avatar.Fallback>
       </Avatar>
         </li>
-        <li></li>
+        <li>
+          <Button onClick={handleSignOut} variant='danger' className={'rounded-none'}>Logout</Button>
+        </li>
       </> : <>
         <li><Link href={'/login'}>Login</Link></li>
         <li><Link href={'/signup'}>Sign Up</Link></li>

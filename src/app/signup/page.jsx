@@ -1,7 +1,6 @@
 "use client";
 import { FcGoogle } from "react-icons/fc";
 import { Card, Separator } from '@heroui/react';
-import React from 'react';
 import { Button, Description, FieldError, Form, Input, Label, TextField } from "@heroui/react";
 import { authClient } from '@/lib/auth-client';
 import { redirect } from 'next/navigation';
