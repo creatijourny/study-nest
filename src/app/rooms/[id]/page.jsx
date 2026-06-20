@@ -1,5 +1,5 @@
 
-// import BookingModal from '@/components/BookingModal';
+import BookingModal from '@/components/BookingModal';
 import { DeleteRoom } from '@/components/DeleteRoom';
 import { EditModal } from '@/components/EditModal';
 
@@ -51,11 +51,11 @@ const RoomDetailsPage = async ({ params }) => {
                 </div>
                 <div className='flex justify-start items-center gap-2'>
                    
-                    {/* <BookingModal 
+                    <BookingModal 
                     roomName={room.roomName}
                     imageUrl={room.imageUrl} 
                     hourlyRate={room.price}
-                    roomId={room._id}/> */}
+                    roomId={room._id}/>
                     
                    <EditModal room={room}/>
                    <DeleteRoom room={room}/>
