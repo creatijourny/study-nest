@@ -1,24 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Study Nest
 
-## Getting Started
+Study Nest is a modern library room booking platform that allows users to explore study rooms, check availability, and reserve spaces for focused learning and collaboration.
 
-First, run the development server:
+## 🌐 Live Site
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**Client URL:** https://your-client-site-url.vercel.app
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📖 Features
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+* Browse a collection of study rooms with detailed information and images.
+* Book study rooms by selecting a date and time slot.
+* Real-time conflict checking prevents double bookings for the same room and time.
+* Secure user authentication with login and registration functionality.
+* View and manage personal room bookings from the "My Bookings" page.
+* Responsive design that works seamlessly across desktop, tablet, and mobile devices.
+* Modern and intuitive user interface built for a smooth booking experience.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠️ Technologies Used
+
+* Next.js
+* React
+* Tailwind CSS
+* HeroUI
+* MongoDB
+* Better Auth
+* Express.js
+* Node.js
+
+## 🚀 Getting Started
+
+1. Clone the repository.
+2. Install dependencies using `npm install`.
+3. Configure environment variables.
+4. Run the development server using `npm run dev`.
+5. Open the application in your browser.
+
+## 📌 Project Goal
+
+To provide students, researchers, and readers with an easy-to-use platform for discovering and reserving library study spaces efficiently.
+
+
 
 ## Learn More
 
