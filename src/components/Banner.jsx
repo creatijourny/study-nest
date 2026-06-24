@@ -3,7 +3,7 @@ import React from 'react';
 
 const Banner = () => {
     return (
-        <div className='max-w-7xl mx-auto'>
+        <div className='max-w-7xl mx-auto py-3'>
                  <div className="bg-[url('/assets/cozy-library.jpg')] h-[60vh] w-full bg-cover bg-no-repeat bg-center flex items-center rounded shadow-2xl my-4">
                  {/* className="bg-[url('https://i.ibb.co.com/BHqGKDxQ/hero-image.png')] h-[60vh] w-full bg-cover bg-no-repeat bg-center flex items-center rounded shadow-2xl my-4" */}
       {/* bg-[url('/assets/banner.png')] */}
