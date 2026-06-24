@@ -24,7 +24,7 @@ export function EditModal({ room }) {
         room.amenities = selectedAmenities;
         console.log(room);
 
-        const res = await fetch(`http://localhost:5000/room/${_id}`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/room/${_id}`, {
                 method: 'PATCH',
                 headers:{
                     'content-type': 'application/json'

@@ -2,7 +2,7 @@ import RoomCard from "@/components/RoomCard";
 
 
 const AllRoomsPage = async () => {
-    const res = await fetch('http://localhost:5000/room')
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/room`)
     const rooms = await res.json()
 
     
