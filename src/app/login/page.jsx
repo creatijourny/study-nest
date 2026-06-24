@@ -25,7 +25,7 @@ const LoginPage = () => {
         console.log({ data, error });
 
         if (data) {
-            toast.success("Successfully registered!")
+            toast.success("Successfully login!")
             redirect('/');
 
         }
@@ -48,15 +48,16 @@ const LoginPage = () => {
         <div className='max-w-7xl mx-auto'>
             <div className='text-center mb-4'>
                 <h1 className='text-2xl font-bold'>Please login</h1>
-                <p>Enjoy reading with Studynook</p>
+                <p>Enjoy reading with StudyNest</p>
             </div>
             <Card className='border rounded-md'>
-                <Form onSubmit={onSubmit} className="flex w-96 flex-col gap-4 space-y-3 p-3">
+                <Form onSubmit={onSubmit} autoComplete="off"  className="flex w-96 flex-col gap-4 space-y-3 p-3">
 
                     <TextField
                         isRequired
-                        name="email"
-                        type="email"
+                        name="user_email"
+                        type="email" 
+                        autoComplete="off"                       
                         validate={(value) => {
                             if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)) {
                                 return "Please enter a valid email address";
@@ -65,14 +66,15 @@ const LoginPage = () => {
                         }}
                     >
                         <Label>Email</Label>
-                        <Input placeholder="john@example.com" />
+                        <Input placeholder="john@example.com"
+                        autoComplete="off" />
                         <FieldError />
                     </TextField>
                     <TextField
                         isRequired
                         minLength={8}
-                        name="password"
-                        type="password"
+                        name="user_password"
+                        type="password"                        
                         validate={(value) => {
                             if (value.length < 8) {
                                 return "Password must be at least 8 characters";
@@ -87,7 +89,8 @@ const LoginPage = () => {
                         }}
                     >
                         <Label>Password</Label>
-                        <Input placeholder="Enter your password" />
+                        <Input placeholder="Enter your password" 
+                        autoComplete='new-password'/>
                         <Description>Must be at least 8 characters with 1 uppercase and 1 number</Description>
                         <FieldError />
                     </TextField>

@@ -2,15 +2,23 @@
 import BookingModal from '@/components/BookingModal';
 import { DeleteRoom } from '@/components/DeleteRoom';
 import { EditModal } from '@/components/EditModal';
+import { auth } from '@/lib/auth';
+import { headers } from 'next/headers';
 
 import Image from 'next/image';
 
-const RoomDetailsPage = async ({ params }) => {   
-
+const RoomDetailsPage = async ({ params }) => {
     const { id } = await params;
-    
+    // const token = await auth.api.getToken({
+    //     headers: await headers()
+    // })  
+    // console.log(token); 
         
-    const res = await fetch(`http://localhost:5000/room/${id}`);
+    const res = await fetch(`http://localhost:5000/room/${id}`, {
+        // headers: {
+        //     authorization: `Bearer ${token}`
+        // }
+    });
 
 //     if (!res.ok) {
 //   const errorText = await res.text();
@@ -29,13 +37,13 @@ const RoomDetailsPage = async ({ params }) => {
     return (
         <div className='flex flex-col items-center gap-5 shadow-sm max-w-7xl mx-auto'>  
             <div className="p-4">
-                <Image
+                {imageUrl ? (<Image
                     alt={roomName}
                     src={imageUrl}
                     height={500}
                     width={600}
                     className="w-full object-cover"
-                />
+                />) : null}
             </div>
             <div className='w-[70vh] p-2 space-y-3'>
                 <h2 className="text-xl font-bold">Name: {roomName}</h2>

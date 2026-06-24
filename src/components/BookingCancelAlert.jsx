@@ -1,9 +1,9 @@
 "use client";
 
-import {AlertDialog, Button} from "@heroui/react";
+import { AlertDialog, Button } from "@heroui/react";
 import { toast } from "react-toastify";
 
-export function BookingCancelAlert({booking, bookingId}) {
+export function BookingCancelAlert({ booking, bookingId }) {
 
   const handleCancelBooking = async () => {
 
@@ -18,29 +18,39 @@ export function BookingCancelAlert({booking, bookingId}) {
     window.location.reload();
   }
 
-const isCancel = (booking) => {
+  const isCancel = (booking) => {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
     const bookingDate = new Date(booking.date);
 
     return (
-        (booking.status || "confirmed") === "confirmed" &&
-        bookingDate >= today
+      (booking.status || "confirmed") === "confirmed" &&
+      bookingDate >= today
     );
-};
+  };
 
   return (
-    <AlertDialog>
+    <AlertDialog>    
+
       {isCancel(booking) && (
-                            <Button
-                                variant="outline"
-                                color="danger"
-                                className={'bg-red-100 text-red-500 border-none'}
-                            >
-                                Cancel
-                            </Button>
-                        )}
+        <Button
+          variant="outline"
+          color="danger"
+          className={'bg-red-100 text-red-500 border-none'}
+        >
+          Cancel
+        </Button>
+      )}
+
+       {/* <Button
+        variant="outline"
+        color="danger"
+        className={'bg-red-100 text-red-500 border-none'}
+      >
+        Cancel
+      </Button> */}
+
       <AlertDialog.Backdrop>
         <AlertDialog.Container>
           <AlertDialog.Dialog className="sm:max-w-[400px]">
@@ -54,7 +64,7 @@ const isCancel = (booking) => {
                 This will permanently delete this booking and this action cannot be undone.
               </p>
             </AlertDialog.Body>
-            <AlertDialog.Footer>              
+            <AlertDialog.Footer>
               <Button onClick={handleCancelBooking} slot="close" variant="danger">
                 Cancel Booking
               </Button>

@@ -4,14 +4,16 @@
 import { Button, FieldError, Input, Label, Modal, Surface, TextArea, TextField } from "@heroui/react";
 import Amenities from "./Amenities";
 import { useState } from "react";
-// import { authClient } from "@/lib/auth-client";
+import { authClient } from "@/lib/auth-client";
+import { toast } from "react-toastify";
+import { redirect } from "next/navigation";
 
 
 
 export function EditModal({ room }) {
 
-    // const { data: session } = authClient.useSession()    
-    //     const user = session?.user
+    const { data: session } = authClient.useSession()    
+        const user = session?.user
 
     const { _id, imageUrl, roomName, description, floor, seat, amenities, price } = room;
 
@@ -30,7 +32,9 @@ export function EditModal({ room }) {
                 body: JSON.stringify(room)
             })
             const data = await res.json()
-            console.log(data);
+            toast.success("Room updated successfully!")
+            redirect('/rooms');
+            // console.log(data);
 
     };
 
@@ -44,18 +48,18 @@ export function EditModal({ room }) {
                 prev.filter((item) => item !== amenity)
             );
         }
-
-           
+        
+        
     };
 
     return (
         <Modal>
-            {/* <div>
-                {user ? <Button variant='outline' className={'rounded-none px-3 py-2 bg-blue-500 text-white'}>Edit</Button> : ""}
-            </div> */}
             <div>
-                <Button variant='outline' className={'rounded-none px-4 py-2 bg-blue-500 text-white'}>Edit</Button>
+                {user ? <Button variant='outline' className={'rounded-none px-3 py-2 bg-blue-500 text-white'}>Edit</Button> : ""}
             </div>
+            {/* <div>
+                <Button variant='outline' className={'rounded-none px-4 py-2 bg-blue-500 text-white'}>Edit</Button>
+            </div> */}
             <Modal.Backdrop>
                 <Modal.Container placement="auto">
                     <Modal.Dialog className="sm:max-w-2xl overflow-hidden">

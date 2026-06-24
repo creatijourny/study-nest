@@ -1,9 +1,11 @@
 'use client'
 import Amenities from '@/components/Amenities';
 import { Button, Card, FieldError, Input, Label, ListBox, TextArea, Select, TextField, Checkbox } from '@heroui/react';
+import { redirect } from 'next/navigation';
 // import { redirect } from 'next/navigation';
 
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
 // // import { toast } from 'react-toastify';
 
 const amenitiesList = [
@@ -34,9 +36,9 @@ const AddRoomPage = () => {
         })
 
         const data = await res.json()
-        console.log(data);
-        // toast.success("Room added successfully")
-        // redirect('/rooms');
+        // console.log(data);
+        toast.success("Room added successfully")
+        redirect('/rooms');
     };
 
     const [selectedAmenities, setSelectedAmenities] = useState([]);

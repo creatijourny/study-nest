@@ -13,7 +13,7 @@ const AllRoomsPage = async () => {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {
-                    rooms.map(room => <RoomCard key={room._id} room={room}/>)
+                    rooms.slice(0, 9).map(room => <RoomCard key={room._id} room={room}/>)
                 }
             </div>
         </div>

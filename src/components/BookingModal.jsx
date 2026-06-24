@@ -9,10 +9,12 @@ import {
 } from "@heroui/react";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "react-toastify";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
+// import { router } from "better-auth/api";
 
 export default function BookingModal({ roomName, imageUrl, roomId, hourlyRate }) {
 
+    const router = useRouter();
     const {data: session} = authClient.useSession();
     const user = session?.user;
     
@@ -44,6 +46,11 @@ export default function BookingModal({ roomName, imageUrl, roomId, hourlyRate })
 //   const { imageUrl, roomName, description, floor, seat, amenities, price } = room;
 
   const handleBooking = async () => {
+    if (!user) {
+    toast.error("Please login first");
+    return;
+  }
+
     
     const bookingData = {
         userId: user?.id,        
@@ -60,16 +67,19 @@ export default function BookingModal({ roomName, imageUrl, roomId, hourlyRate })
     };
     // console.log(bookingData);
 
+    const {data:tokenData} = await authClient.token()
+
     const res = await fetch('http://localhost:5000/booking', {
         method: 'POST',
         headers: {
-            'content-type': 'application/json'
+            'content-type': 'application/json',
+            authorization: `Bearer ${tokenData?.token}`
         },
         body: JSON.stringify(bookingData),
     })
 
-    const data = await res.json();
-    // toast.success("Room booked successfully!")     
+    const data = await res.json();    
+    
 
     if (res.status === 409) {
     toast.error(data.message);
@@ -84,12 +94,12 @@ if (!res.ok) {
 
 toast.success(data.message);
 
-setTimeout(() => {
-    router.push('/my-bookings');
-}, 1000);
+// setTimeout(() => {  
+//     router.push('/my-bookings');
+// }, 1000);
 
-    toast.success("Room booked successfully!")
-    // redirect('/my-bookings');
+    // toast.success("Room booked successfully!")
+    redirect('/my-bookings');
   // //   // console.log(data);
   };
 
@@ -97,9 +107,18 @@ setTimeout(() => {
     <Modal>
       <Button
         variant="secondary"
-        className="bg-cyan-500 text-white rounded-none"
+        className="bg-cyan-500 text-white rounded-none" 
+        onClick={() => {
+    if (!user) {
+      toast.info("Please login to continue");
+      router.push("/login");
+      return;
+    }
+
+    // Open booking modal
+  }}
       >
-        Book Now
+        {user ? "Book Now" : "Login to Book"}
       </Button>
 
       <Modal.Backdrop>

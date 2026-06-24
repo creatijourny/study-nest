@@ -10,9 +10,13 @@ const Amenities = ({ selectedAmenities = [], handleAmenityChange }) => {
   ];
 
   return (
-    <div className="grid grid-cols-2 gap-4">
+    <div>
+      <p className="font-semibold p-2">Amenities: </p>
+      <div className="grid grid-cols-2 gap-4">
+      
       {amenities.map((item) => (
         <label key={item} className="flex items-center gap-1.5">
+
           <input
             type="checkbox"
             value={item}
@@ -24,6 +28,7 @@ const Amenities = ({ selectedAmenities = [], handleAmenityChange }) => {
           {item}
         </label>
       ))}
+    </div>
     </div>
   );
 };
